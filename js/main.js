@@ -4,7 +4,7 @@ const keyword = document.getElementById("keyword")
 const small = document.getElementById("small")
 const hint01 = document.getElementById("hint01")
 const hint02 = document.getElementById("hint02")
-let selected = 1;
+let selected = 0;
 
 let data = {
     input: "",
@@ -32,12 +32,13 @@ let data = {
     }
 }
 
-function fnc_encoding(inputX, keyX, char, i){
-    let matika = keyX.charCodeAt(i % keyX.length) - i
-    return matika
-}
-
-function fnc_decoding(inputX, keyX, char, i){
-    let matika = keyX.charCodeAt(i % keyX.length) - i
-    return matika
-}
+$(".btn-group>button").on("click", function(){
+    for (i=0; i < 2; i++){
+        document.getElementById("btn-0" + i).disabled = false
+    }
+    input.value = ""
+    output.value = ""
+    let ids = this.id.slice(-1)
+    document.getElementById("btn-0" + ids).disabled = true
+    selected = ids
+})
