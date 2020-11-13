@@ -4,6 +4,8 @@ const keyword = document.getElementById("keyword")
 const small = document.getElementById("small")
 const hint01 = document.getElementById("hint01")
 const hint02 = document.getElementById("hint02")
+const key01 = document.getElementById("keycodeleft")
+const key02 = document.getElementById("keycoderight")
 let selected = 0;
 
 let data = {
@@ -17,7 +19,11 @@ let data = {
     fnc_encryption: function(inputX, keyX) {
         let complete = ""
         for (i=0; i<inputX.length; i++){
-            complete += String.fromCharCode(inputX.charCodeAt(i) + fnc_encoding(inputX, keyX, inputX.charCodeAt(i), i))
+            complete += String.fromCharCode(inputX.charCodeAt(i) + fnc_encoding(keyX, i))
+            if (i + 1 == inputX.length){
+                key01.innerText = `Last keycode: &#${inputX.charCodeAt(i)}`
+                key02.innerText = `Last keycode: &#${complete.charCodeAt(i)}`
+            }
         }
         output.value = complete
         return;
@@ -25,7 +31,11 @@ let data = {
     fnc_decryption: function(inputX, keyX){
         let complete = ""
         for (i=0; i<inputX.length; i++){
-            complete += String.fromCharCode(inputX.charCodeAt(i) - fnc_decoding(inputX, keyX, inputX.charCodeAt(i), i))
+            complete += String.fromCharCode(inputX.charCodeAt(i) - fnc_decoding(keyX, i))
+            if (i + 1 == inputX.length){
+                key01.innerText = `Last keycode: &#${inputX.charCodeAt(i)}`
+                key02.innerText = `Last keycode: &#${complete.charCodeAt(i)}`
+            }
         }
         output.value = complete
         return;

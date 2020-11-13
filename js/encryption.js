@@ -9,12 +9,12 @@ $("#input").on("input", function(){
     }
 })
 
-function fnc_encoding(inputX, keyX, char, i){
+function fnc_encoding(keyX, i){
     let matika = keyX.charCodeAt(i % keyX.length) - i
     return matika
 }
 
-function fnc_decoding(inputX, keyX, char, i){
+function fnc_decoding(keyX, i){
     let matika = keyX.charCodeAt(i % keyX.length) - i
     return matika
 }
